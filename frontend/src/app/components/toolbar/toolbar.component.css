@@ -3,32 +3,34 @@
 }
 
 mat-toolbar {
-  background: rgba(0, 0, 0, 0.5); /* Translucent background */
+  background: rgba(122, 122, 122, 0.9); /* Translucent background */
   color: white;
   padding: 0 16px;
   position: fixed;
-  top: 10%;
-  left: 0;
+  top: 5%;
   width: fit-content;
   z-index: 1000;
   border-radius: 32px; /* Rounded corners */
   display: flex;
   align-items: center;
-  opacity: 70%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
 }
 
 .search-bar-background {
   border-radius: 22px;
-  background: #696b70;
+  background: #5e5e5e;
   margin-left: 17px;
 }
 
 .button-background {
-  background: #696b70;
+  background: #8f9299;
   border-radius: 50%;
   width: 40px;
   height: 40px;
   align-content: center;
+  opacity: 80%;
 }
 
 .search-bar {
@@ -39,7 +41,7 @@ mat-toolbar {
 button.mat-icon-button {
   background: none;
   border: none;
-  color: white;
+  color: rgb(197, 197, 197);
 }
 
 button.mat-icon-button:focus {
@@ -57,9 +59,11 @@ button.mat-icon-button:focus {
 .search-bar-text-box {
   vertical-align: super;
   height: 30px;
-  background: #696b70;
+  background: #5e5e5e;
   border: none;
   color: white;
+  outline: none;
+  width: 400px;
 }
 
 .search-bar-text-box::placeholder {
