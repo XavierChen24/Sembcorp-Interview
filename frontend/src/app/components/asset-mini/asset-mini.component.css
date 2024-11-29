@@ -5,10 +5,8 @@
 }
 
 .card {
-  background-color: #82848a;
   opacity: 0.9;
   border-radius: 30px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
   margin: 0 16px;
   width: 300px;
 }

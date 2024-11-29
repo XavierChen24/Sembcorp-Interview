@@ -8,6 +8,9 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+/*global style for all cards, toolbards transparent background. */
 .global-background-style {
-  background: rgba(122, 122, 122, 0.9);
+  background: rgba(122, 122, 122, 0.8) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }

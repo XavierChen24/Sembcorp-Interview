@@ -3,8 +3,6 @@
 }
 
 mat-toolbar {
-  background: rgba(122, 122, 122, 0.9); /* Translucent background */
-  color: white;
   padding: 0 16px;
   position: fixed;
   top: 5%;
