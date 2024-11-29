@@ -1,7 +1,13 @@
-<div class="flex two">
-
+<div>
   <div>
-      <app-map [latlangs]="latlangs"></app-map>
+    <app-toolbar/>
+  </div>
+  <div>
+      <app-map/>
+  </div>
+  <div class = "sidebar">
+      <app-asset-mini class = "asset"/>
+      <app-today-performance-mini class = "performance"/>
+      <app-daily-energy-generated class = "daily"/>
   </div>
 </div>
-<div>HERE</div>

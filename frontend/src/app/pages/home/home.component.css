@@ -1,0 +1,18 @@
+.asset {
+  margin-bottom: 20px;
+}
+.performance {
+  margin-bottom: 20px;
+}
+
+.daily {
+  margin-bottom: 20px;
+}
+
+.sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-top: 6%;
+  margin-left: 60%;
+}
