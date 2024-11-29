@@ -1,7 +1,7 @@
-import { Component, AfterViewInit, Input } from '@angular/core';
+import { environment } from './../../../../environments/environment';
+
+import { Component, AfterViewInit, Input, OnInit } from '@angular/core';
 import * as L from 'leaflet';
-import { LatlangService } from '../../services/latlang.service';
-import { Latlang } from '../../services/latlang'
 
 
 @Component({
@@ -12,93 +12,47 @@ import { Latlang } from '../../services/latlang'
   styleUrls: ['./map.component.css']
 })
 
-export class MapComponent implements AfterViewInit {
+export class MapComponent implements OnInit {
 
-  @Input() latlangs: Latlang[] = []
+  map : any
+  defaultZoom = environment.mapDefaultZoom
+  latlng = new L.LatLng(environment.mapCenter.lat, environment.mapCenter.long)
 
-  defaultZoom = 12
-  latlng = new L.LatLng(40.90469073272855, 29.204406738281254)
 
-  private map!: L.Map
-
-  private initMap(): void {
-
-    const baseMapURl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  configMap(){
     this.map = L.map('map', {
       center: this.latlng,
-      zoom: this.defaultZoom
-    })
-    L.tileLayer(baseMapURl, {
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(this.map)
-
-    this.map.on("moveend", (event => this.onMapMoveEnd(event)));
-
-  }
-
-  constructor(private latlangService: LatlangService) {
-    // Fix: Leaflet icon paths
-    let DefaultIcon = L.icon({
-      iconUrl: '/media/marker-icon.png',
-      shadowUrl: '/media/marker-shadow.png',
-      iconAnchor:   [12, 41], // point of the icon which will correspond to marker's location
-      shadowAnchor: [12, 41],  // the same for the shadow
-      popupAnchor:  [-3, -50] // point from which the popup should open relative to the iconAnchor
-    })
-    L.Marker.prototype.options.icon = DefaultIcon
-
-    // register current latlang observable for centering map
-    latlangService.currentLatlangObs.subscribe((newLatlan) => {
-      this.map.setView([newLatlan.lat, newLatlan.lng], this.defaultZoom)
-    })
-  }
-
-  ngAfterViewInit(): void {
-    // Deferred map initialization, after Angular preparing dom element
-    this.initMap()
-  }
-
-  onMapMoveEnd(event: L.LeafletEvent): void {
-    this.latlng = this.map.getCenter()
-  }
-
-  setMarker() {
-    this.latlng = this.map.getCenter()
-
-    this.latlangService.add({
-        lat: this.latlng.lat,
-        lng: this.latlng.lng,
-        datetime: "from client"
-      })
-  }
-
-
-  updateMarkers(){
-    // clean markers
-    this.map.eachLayer((layer)=>{
-      if (layer.options.pane == "markerPane"){
-        layer.remove()
-      }
+      zoom: this.defaultZoom,
+      zoomControl: false
     })
 
-    // Add markers
-    this.latlangs.forEach((latlang) => {
-      const marker = L.marker([latlang.lat, latlang.lng])
-      marker.addTo(this.map)
-    })
+    //Base image layer. The land and sea with colour.
+    const Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    }).addTo(this.map);
+
+    //Added the border markings
+    const Stadia_StamenTerrainLabels = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain_labels/{z}/{x}/{y}{r}.png', {
+      minZoom: 0,
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(this.map);
+
+    //Added the cities/countries names.
+    const Stadia_StamenTerrainLines = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain_lines/{z}/{x}/{y}{r}.png', {
+      minZoom: 0,
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(this.map);
+
+    // //Markers
+    // const marker = L.marker([51.505, -0.09]).addTo(this.map);
+    // marker.bindPopup('A sample marker').openPopup();
   }
 
-  ngOnChanges() {
-    if (this.map){
-      this.updateMarkers()
-    }else{
-      // Delay markers update for first render
-      setTimeout(() => {
-        this.updateMarkers()
-      }, 500)
-    }
-
-
+  ngOnInit(): void {
+    this.map = this.configMap();
   }
+
 
 }
