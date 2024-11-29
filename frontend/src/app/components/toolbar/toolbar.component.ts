@@ -18,10 +18,10 @@ import { map, startWith } from 'rxjs/operators';
     MatIconModule,
     MatInputModule,
     MatMenuModule,
-    MatFormFieldModule
+    MatFormFieldModule,
   ],
   templateUrl: './toolbar.component.html',
-  styleUrl: './toolbar.component.css'
+  styleUrl: './toolbar.component.css',
 })
 export class ToolbarComponent {
   searchControl = new FormControl();
@@ -35,13 +35,15 @@ export class ToolbarComponent {
     // Filter the options based on the search input
     this.filteredOptions = this.searchControl.valueChanges.pipe(
       startWith(''),
-      map(value => this.filter(value))
+      map((value) => this.filter(value))
     );
   }
 
   private filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+    return this.options.filter((option) =>
+      option.toLowerCase().includes(filterValue)
+    );
   }
 
   onSearch(): void {

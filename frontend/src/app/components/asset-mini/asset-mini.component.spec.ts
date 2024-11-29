@@ -8,10 +8,9 @@ describe('AssetMiniComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AssetMiniComponent]
-    })
-    .compileComponents();
-    
+      imports: [AssetMiniComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(AssetMiniComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

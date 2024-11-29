@@ -8,10 +8,9 @@ describe('TodayPerformanceMiniComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TodayPerformanceMiniComponent]
-    })
-    .compileComponents();
-    
+      imports: [TodayPerformanceMiniComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(TodayPerformanceMiniComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

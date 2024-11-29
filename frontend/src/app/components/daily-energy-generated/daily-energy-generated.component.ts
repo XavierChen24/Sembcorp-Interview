@@ -1,4 +1,4 @@
-import { Component,ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
@@ -7,13 +7,10 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
   standalone: true,
   imports: [MatCardModule, CanvasJSAngularChartsModule],
   templateUrl: './daily-energy-generated.component.html',
-  styleUrl: './daily-energy-generated.component.css'
+  styleUrl: './daily-energy-generated.component.css',
 })
-
 export class DailyEnergyGeneratedComponent {
-
-  constructor() {
-  }
+  constructor() {}
 
   lineChartOptions = {
     animationEnabled: true,

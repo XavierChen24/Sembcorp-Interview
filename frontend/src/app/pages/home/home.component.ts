@@ -4,7 +4,7 @@ import { MapComponent } from '../../components/map/map.component';
 import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
 import { AssetMiniComponent } from '../../components/asset-mini/asset-mini.component';
 import { TodayPerformanceMiniComponent } from '../../components/today-performance-mini/today-performance-mini.component';
-import { DailyEnergyGeneratedComponent } from "../../components/daily-energy-generated/daily-energy-generated.component";
+import { DailyEnergyGeneratedComponent } from '../../components/daily-energy-generated/daily-energy-generated.component';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -13,12 +13,9 @@ import { DailyEnergyGeneratedComponent } from "../../components/daily-energy-gen
     ToolbarComponent,
     AssetMiniComponent,
     TodayPerformanceMiniComponent,
-    DailyEnergyGeneratedComponent
-],
+    DailyEnergyGeneratedComponent,
+  ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
-
-export class HomeComponent {
-
-}
+export class HomeComponent {}
