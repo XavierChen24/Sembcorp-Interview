@@ -15,3 +15,72 @@
 #map {
   height: 100%;
 }
+
+
+
+/* Start of the animation and modal config */
+.drawer {
+  position: fixed;
+  right: 0;
+  top: 0;
+  padding: 0;
+  width: auto;
+  margin-top: 12%;
+  margin-right: 4%;
+  margin-left: 7%;
+  height: calc(60% - 2rem);
+  border: none;
+  background: #fff;
+  box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+  overflow: auto;
+  border-radius: 25px;
+  opacity: 90%;
+
+  &.opened {
+    animation: slide-in 0.75s forwards;
+  }
+
+  &:not(.opened) {
+    animation: slide-out 0.75s forwards;
+  }
+}
+
+
+dialog::backdrop {
+  background: var(--neutral-black, #000);
+  opacity: 0.2;
+}
+
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .drawer {
+    &.opened {
+      animation: none;
+    }
+
+    &:not(.opened) {
+      animation: none;
+    }
+  }
+}
+/* End of the animation and modal config */

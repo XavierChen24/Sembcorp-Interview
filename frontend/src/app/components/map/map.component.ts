@@ -1,6 +1,11 @@
 import { environment } from './../../../../environments/environment';
 
-import { Component, AfterViewInit, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import * as L from 'leaflet';
 
 @Component({
@@ -54,11 +59,35 @@ export class MapComponent implements OnInit {
     ).addTo(this.map);
 
     // //Markers
-    // const marker = L.marker([51.505, -0.09]).addTo(this.map);
+    const marker = L.marker(this.latlng).addTo(this.map);
     // marker.bindPopup('A sample marker').openPopup();
+    marker.on("click", e => {
+      this.openModal();
+    })
   }
 
   ngOnInit(): void {
     this.map = this.configMap();
+  }
+
+  @ViewChild('dialog') dialog!: ElementRef<HTMLDialogElement>;
+
+  closeModal() {
+    this.dialog.nativeElement.close();
+    this.dialog.nativeElement.classList.remove('opened');
+  }
+
+  openModal() {
+    this.dialog.nativeElement.showModal();
+    this.dialog.nativeElement.classList.add('opened');
+  }
+
+  ngAfterViewInit() {
+    this.dialog.nativeElement.addEventListener('click', (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (target.nodeName === 'DIALOG') {
+        this.closeModal();
+      }
+    });
   }
 }

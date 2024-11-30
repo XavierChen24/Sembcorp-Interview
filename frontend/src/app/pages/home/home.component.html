@@ -3,7 +3,12 @@
     <app-toolbar />
   </div>
   <div>
-    <app-map />
+    <app-map>
+      <app-modal-view>
+        [data]="(chosenDataForChosenPoint$ | async) ?? undefined"
+        (closeDrawerEmitter)="closeDrawer()"
+      </app-modal-view>
+    </app-map>
   </div>
   <div class="sidebar">
     <app-asset-mini class="asset" />
