@@ -84,6 +84,7 @@
   border-radius: 30px;
   margin: 0 16px;
   width: auto;
+  padding: 10px;
 }
 
 .right-modal .card-main-header {
@@ -104,7 +105,7 @@
   color: #ffffff;
   font-size: 30px;
   font-weight: bold;
-  margin: 0;
+  margin-left: 18px;
 }
 
 .right-modal .units {
@@ -133,6 +134,7 @@
 
 .asset-column-width {
   width: 44%;
+  margin-right: 10px;
 }
 
 .asset-column {
