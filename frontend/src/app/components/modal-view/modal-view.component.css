@@ -80,11 +80,10 @@
 }
 
 .right-modal mat-card {
-    opacity: 0.9;
-    border-radius: 30px;
-    margin: 0 16px;
-    width: auto;
-
+  opacity: 0.9;
+  border-radius: 30px;
+  margin: 0 16px;
+  width: auto;
 }
 
 .right-modal .card-main-header {
@@ -116,7 +115,8 @@
 }
 
 .right-modal .card-content {
-  display: flex
+  display: flex;
+  padding: 0;
 }
 
 .right-modal .subtitle {
@@ -131,6 +131,11 @@
   flex-direction: row;
 }
 
-.asset-column {
+.asset-column-width {
   width: 44%;
+}
+
+.asset-column {
+  display: flex;
+  flex-direction: column;
 }

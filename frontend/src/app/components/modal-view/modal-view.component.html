@@ -35,7 +35,7 @@
         </mat-card-header>
 
         <div class="asset-row">
-          <div class="asset-column">
+          <div class="asset-column-width">
             <mat-card-title class="card-title">Capacity</mat-card-title>
             <mat-card-content class="card-content">
               <p class="asset-value">{{ capacity }}</p>
@@ -43,7 +43,7 @@
             </mat-card-content>
           </div>
 
-          <div class="asset-column">
+          <div class="asset-column-width">
             <mat-card-title class="card-title">Irridiance</mat-card-title>
             <mat-card-content class="card-content">
               <div class="asset-value">{{ irridiance }}</div>
@@ -53,7 +53,7 @@
         </div>
 
         <div class="asset-row">
-          <div class="asset-column">
+          <div class="asset-column-width">
             <mat-card-title class="card-title">Plant Matrix</mat-card-title>
             <mat-card-subtitle class="subtitle">INV X SCB</mat-card-subtitle>
             <mat-card-content class="card-content">
@@ -62,7 +62,7 @@
               <div class="asset-value">{{ scb }}</div>
             </mat-card-content>
           </div>
-          <div class="asset-column">
+          <div class="asset-column-width">
             <mat-card-title class="card-title">Days Online</mat-card-title>
             <mat-card-content class="card-content">
               <div class="asset-value">{{ days_online }}</div>
@@ -74,20 +74,26 @@
 
       <mat-card class="global-background-style">
         <mat-card-header class="card-header">
-          <mat-card-title class="card-title"
+          <mat-card-title class="card-main-header"
             >Today's Performance</mat-card-title
           >
         </mat-card-header>
-        <mat-card-content class="card-content">
-          <div class="units">Performance Ratio</div>
-          <p class="asset-value">{{ performance_ratio }}</p>
-          <div class="units">%</div>
-        </mat-card-content>
-        <mat-card-content class="card-content">
-          <div class="units">Inverter Efficiency</div>
-          <div class="generated-value">{{ inverter_efficiency }}</div>
-          <div class="units">%</div>
-        </mat-card-content>
+        <div class="asset-column">
+          <mat-card-title class="card-title">Performance Ratio</mat-card-title>
+          <mat-card-content class="card-content">
+            <div class="asset-value">{{ performance_ratio }}</div>
+            <div class="units">%</div>
+          </mat-card-content>
+        </div>
+        <div class="asset-column">
+          <mat-card-title class="card-title"
+            >Inverter Efficiency</mat-card-title
+          >
+          <mat-card-content class="card-content">
+            <div class="asset-value">{{ inverter_efficiency }}</div>
+            <div class="units">%</div>
+          </mat-card-content>
+        </div>
       </mat-card>
 
       <mat-card class="global-background-style">
