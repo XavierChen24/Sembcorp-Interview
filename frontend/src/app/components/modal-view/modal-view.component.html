@@ -1,5 +1,5 @@
 <div class="modal-container">
-  <div class="dashboard">
+  <div class="left-modal">
     <h1>Dashboards</h1>
     <button mat-icon-button>
       <mat-icon>settings</mat-icon>
@@ -25,7 +25,102 @@
       <mat-icon>settings</mat-icon>
       <h2>Clipping Loss</h2>
     </button>
-
   </div>
+  <div class="right-modal global-background-style">
+    <h1>{{countryName}}</h1>
+    <div class="cards-container">
+      <mat-card class="global-background-style">
+        <mat-card-header>
+          <mat-card-title class="card-main-header">Assets</mat-card-title>
+        </mat-card-header>
 
+        <div class="asset-row">
+          <div class="asset-column">
+            <mat-card-title class="card-title">Capacity</mat-card-title>
+            <mat-card-content class="card-content">
+              <p class="asset-value">{{ capacity }}</p>
+              <div class="units">MWp</div>
+            </mat-card-content>
+          </div>
+
+          <div class="asset-column">
+            <mat-card-title class="card-title">Irridiance</mat-card-title>
+            <mat-card-content class="card-content">
+              <div class="asset-value">{{ irridiance }}</div>
+              <div class="units">kW/m^2</div>
+            </mat-card-content>
+          </div>
+        </div>
+
+        <div class="asset-row">
+          <div class="asset-column">
+            <mat-card-title class="card-title">Plant Matrix</mat-card-title>
+            <mat-card-subtitle class="subtitle">INV X SCB</mat-card-subtitle>
+            <mat-card-content class="card-content">
+              <div class="asset-value">{{ inv }}</div>
+              <div class="asset-value">X</div>
+              <div class="asset-value">{{ scb }}</div>
+            </mat-card-content>
+          </div>
+          <div class="asset-column">
+            <mat-card-title class="card-title">Days Online</mat-card-title>
+            <mat-card-content class="card-content">
+              <div class="asset-value">{{ days_online }}</div>
+              <div class="units">Days</div>
+            </mat-card-content>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card class="global-background-style">
+        <mat-card-header class="card-header">
+          <mat-card-title class="card-title"
+            >Today's Performance</mat-card-title
+          >
+        </mat-card-header>
+        <mat-card-content class="card-content">
+          <div class="units">Performance Ratio</div>
+          <p class="asset-value">{{ performance_ratio }}</p>
+          <div class="units">%</div>
+        </mat-card-content>
+        <mat-card-content class="card-content">
+          <div class="units">Inverter Efficiency</div>
+          <div class="generated-value">{{ inverter_efficiency }}</div>
+          <div class="units">%</div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="global-background-style">
+        <mat-card-header class="card-header">
+          <mat-card-title class="card-title">Minimap</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="card-content">
+          minimap
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="global-background-style">
+        <mat-card-header class="card-header">
+          <mat-card-title class="card-title">Today's Generation</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="card-content">
+          minimap
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="global-background-style">
+        <mat-card-header class="card-header">
+          <mat-card-title class="card-title"
+            >Irridation Timeseries</mat-card-title
+          >
+        </mat-card-header>
+        <mat-card-content class="card-content">
+          <canvasjs-chart
+            [options]="lineChartOptions"
+            [styles]="{ width: '100%', height: '100%' }"
+          ></canvasjs-chart>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
 </div>
