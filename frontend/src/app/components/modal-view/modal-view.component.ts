@@ -4,11 +4,16 @@ import { Data } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+// Angular Chart Component
+import { AgCharts } from 'ag-charts-angular';
+import { AgChartOptions } from "ag-charts-enterprise";
+import "ag-charts-enterprise";
+
 
 @Component({
   selector: 'app-modal-view',
   standalone: true,
-  imports: [CommonModule,MatIconModule, MatCardModule, CanvasJSAngularChartsModule],
+  imports: [CommonModule,MatIconModule, MatCardModule, CanvasJSAngularChartsModule,AgCharts],
   templateUrl: './modal-view.component.html',
   styleUrl: './modal-view.component.css'
 })
@@ -57,4 +62,56 @@ export class ModalViewComponent {
   closeDrawer() {
     this.closeDrawerEmitter.emit();
   }
+
+  public options: AgChartOptions;
+
+  constructor() {
+    this.options = {
+      data: [
+        {
+          quarter: ``,
+          services: 3.91,
+        }
+      ],
+      width:100,
+      height:100,
+      series: [
+        {
+          type: "radial-bar",
+          radiusKey: "quarter",
+          angleKey: "services",
+          angleName: "Services",
+        },
+      ],
+    } as AgChartOptions;
+  }
+}
+
+function getData() {
+  return [
+    {
+      quarter: `Q1'23`,
+      software: 3.35,
+      hardware: 3.14,
+      services: 3.91,
+    },
+    {
+      quarter: `Q2'23`,
+      software: 3.28,
+      hardware: 3.13,
+      services: 3.54,
+    },
+    {
+      quarter: `Q3'23`,
+      software: 3.14,
+      hardware: 2.84,
+      services: 3.18,
+    },
+    {
+      quarter: `Q4'23`,
+      software: 2.48,
+      hardware: 2.46,
+      services: 3.21,
+    },
+  ];
 }
