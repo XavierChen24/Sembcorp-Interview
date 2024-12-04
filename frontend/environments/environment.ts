@@ -14,17 +14,23 @@ export const environment = {
     {
       name: "Burma",
       lat: 21.9162,
-      long: 95.9560
+      long: 95.9560,
+      assets: 100,
+      days_online: 1000,
     },
     {
       name: "Malaysia",
       lat: 4.2105,
-      long: 101.9758
+      long: 101.9758,
+      assets: 20,
+      days_online: 500,
     },
     {
       name: "China",
       lat: 22.8167,
-      long:108.3669
+      long:108.3669,
+      assets: 30,
+      days_online: 11,
     }
   ],
   weatherStationLatLong: [

@@ -58,12 +58,15 @@ export class MapComponent implements OnInit {
       }
     ).addTo(this.map);
 
-    // //Markers
-    const marker = L.marker(this.latlng).addTo(this.map);
-    // marker.bindPopup('A sample marker').openPopup();
-    marker.on("click", e => {
-      this.openModal();
-    })
+    //Markers
+    for( var country of environment.countriesLatLong) {
+      var latlng = new L.LatLng(country.lat, country.long);
+      const marker = L.marker(latlng).addTo(this.map);
+      marker.on("click", e => {
+        this.openModal(country);
+      })
+    }
+
   }
 
   ngOnInit(): void {
@@ -77,7 +80,7 @@ export class MapComponent implements OnInit {
     this.dialog.nativeElement.classList.remove('opened');
   }
 
-  openModal() {
+  openModal(country: { name: string; lat: number; long: number; assets: number; days_online: number; }) {
     this.dialog.nativeElement.showModal();
     this.dialog.nativeElement.classList.add('opened');
   }
