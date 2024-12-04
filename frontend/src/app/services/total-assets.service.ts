@@ -19,6 +19,14 @@ export class TotalAssetsService {
     return totalAssets;
   }
 
+  getTotalCapacity() : number {
+    var totalCapacity: number = 0;
+    for (var country of environment.countriesLatLong) {
+      totalCapacity += country.capacity_kw;
+    }
+    return totalCapacity;
+  }
+
   formatDateToYYYYMMDD = (): string => {
     const date: Date = new Date();
     const year = date.getFullYear();

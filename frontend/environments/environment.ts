@@ -17,6 +17,7 @@ export const environment = {
       long: 95.9560,
       assets: 100,
       days_online: 1000,
+      capacity_kw:2100
     },
     {
       name: "Malaysia",
@@ -24,6 +25,7 @@ export const environment = {
       long: 101.9758,
       assets: 20,
       days_online: 500,
+      capacity_kw:800
     },
     {
       name: "China",
@@ -31,6 +33,7 @@ export const environment = {
       long:108.3669,
       assets: 30,
       days_online: 11,
+      capacity_kw:1500
     }
   ],
   weatherStationLatLong: [
