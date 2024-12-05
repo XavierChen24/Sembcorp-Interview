@@ -35,6 +35,7 @@ export class TotalAssetsService {
     return totalCapacity;
   }
 
+  //Calculate the Total Generation Today Across all Assets
   getTotalGeneration = async (): Promise<number> => {
     var totalGeneration: number = 0;
     try {
