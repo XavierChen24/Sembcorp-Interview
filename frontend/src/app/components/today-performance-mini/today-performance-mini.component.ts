@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { Timestamp } from 'rxjs';
 import { TotalAssetsService } from '../../services/total-assets.service';
+import moment from 'moment';
 
 @Component({
   selector: 'app-today-performance-mini',
@@ -11,7 +12,7 @@ import { TotalAssetsService } from '../../services/total-assets.service';
   styleUrl: './today-performance-mini.component.css',
 })
 export class TodayPerformanceMiniComponent {
-  timestamp: Date = new Date('18 Jan 2023 10:38am');
+  timestamp: string = moment().format('DD MMM YYYY hh:mma').toString();
   energy: number = 0;
   capacity: number = 0;
 
