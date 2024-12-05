@@ -27,3 +27,12 @@ export interface WeatherData {
     temperature_2m_min: number[];
   };
 }
+
+export interface CountryData {
+    name: String,
+    lat: number,
+    long: number,
+    assets: number,
+    date_online: Date,
+    capacity_kw: number
+}
