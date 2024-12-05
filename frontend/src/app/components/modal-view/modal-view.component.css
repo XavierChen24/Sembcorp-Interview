@@ -66,11 +66,12 @@
 }
 
 .right-modal h1 {
-  margin: 20px;
   font-size: 30px;
   font-weight: bold;
   color: white;
   font-family: "Roboto", sans-serif;
+  padding-top: 33px;
+  padding-left: 26px;
 }
 
 .cards-container {
@@ -86,10 +87,11 @@
   margin: 0 16px;
   width: auto;
   padding: 10px;
+  margin-bottom: 20px;
 }
 
 .right-modal mat-card mat-card-header {
-  padding-top:0;
+  padding-top: 0;
 }
 
 .right-modal .card-main-header {

@@ -25,9 +25,10 @@
   top: 0;
   padding: 0;
   width: auto;
-  margin-top: 12%;
+  margin-top: 8%;
   margin-right: 4%;
   margin-left: 7%;
+  margin-bottom: 4%;
   height: calc(60% - 2rem);
   border: none;
   background: #fff;
@@ -35,6 +36,8 @@
   overflow: auto;
   border-radius: 25px;
   opacity: 90%;
+  height: auto;
+  overflow: hidden;
 
   &.opened {
     animation: slide-in 0.75s forwards;
