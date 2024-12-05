@@ -16,7 +16,7 @@ export const environment = {
       lat: 21.9162,
       long: 95.9560,
       assets: 100,
-      days_online: 1000,
+      date_online: "2024-06-19",
       capacity_kw:2100
     },
     {
@@ -24,7 +24,7 @@ export const environment = {
       lat: 4.2105,
       long: 101.9758,
       assets: 20,
-      days_online: 500,
+      date_online: "2023-06-19",
       capacity_kw:800
     },
     {
@@ -32,7 +32,7 @@ export const environment = {
       lat: 22.8167,
       long:108.3669,
       assets: 30,
-      days_online: 11,
+      date_online: "2021-06-19",
       capacity_kw:1500
     }
   ],
