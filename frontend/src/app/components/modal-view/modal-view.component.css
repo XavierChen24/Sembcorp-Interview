@@ -151,3 +151,15 @@
   width: 200px;
   height: 150px;
 }
+
+.line-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px; /* or any desired height */
+}
+
+#chartContainer {
+  width: 100%; /* Full width */
+  height: 100%; /* Full height of its parent container */
+}

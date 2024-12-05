@@ -120,11 +120,12 @@
             >Irridation Timeseries</mat-card-title
           >
         </mat-card-header>
-        <mat-card-content class="card-content">
-          <canvasjs-chart
+        <mat-card-content class="card-content line-chart">
+          <div>
+            <canvasjs-chart
             [options]="lineChartOptions"
-            [styles]="{ width: '100%', height: '150px' }"
           ></canvasjs-chart>
+          </div>
         </mat-card-content>
       </mat-card>
     </div>
