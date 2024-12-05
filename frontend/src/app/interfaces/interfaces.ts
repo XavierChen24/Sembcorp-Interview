@@ -29,10 +29,10 @@ export interface WeatherData {
 }
 
 export interface CountryData {
-    name: String,
-    lat: number,
-    long: number,
-    assets: number,
-    date_online: Date,
-    capacity_kw: number
+  name: string;
+  lat: number;
+  long: number;
+  assets: number;
+  date_online: string;
+  capacity_kw: number;
 }
