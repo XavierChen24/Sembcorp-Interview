@@ -1,11 +1,6 @@
 import { environment } from './../../../../environments/environment';
 
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  ElementRef,
-} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as L from 'leaflet';
 
 @Component({
@@ -59,14 +54,13 @@ export class MapComponent implements OnInit {
     ).addTo(this.map);
 
     //Markers
-    for( var country of environment.countriesLatLong) {
+    for (var country of environment.countriesLatLong) {
       var latlng = new L.LatLng(country.lat, country.long);
       const marker = L.marker(latlng).addTo(this.map);
-      marker.on("click", e => {
+      marker.on('click', (e) => {
         this.openModal(country);
-      })
+      });
     }
-
   }
 
   ngOnInit(): void {
@@ -80,7 +74,14 @@ export class MapComponent implements OnInit {
     this.dialog.nativeElement.classList.remove('opened');
   }
 
-  openModal(country: { name: string; lat: number; long: number; assets: number; days_online: number; }) {
+  openModal(country: {
+    name: string;
+    lat: number;
+    long: number;
+    assets: number;
+    date_online: string;
+    capacity_kw: number;
+  }) {
     this.dialog.nativeElement.showModal();
     this.dialog.nativeElement.classList.add('opened');
   }
