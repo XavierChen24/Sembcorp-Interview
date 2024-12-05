@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Data } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
@@ -26,7 +26,7 @@ import moment from 'moment';
   templateUrl: './modal-view.component.html',
   styleUrl: './modal-view.component.css',
 })
-export class ModalViewComponent {
+export class ModalViewComponent implements OnInit{
   params = {
     lat: environment.countriesLatLong[0].lat,
     long: environment.countriesLatLong[0].long,
@@ -55,9 +55,6 @@ export class ModalViewComponent {
       },
     ],
   };
-
-  private _data?: Data[]; // Example type
-
   ngOnInit(): void {
     this.energyService.getEnergyData(this.params).then((response) => {
       const dailyData = response.hourly.direct_radiation.map(
@@ -95,12 +92,16 @@ export class ModalViewComponent {
     });
   }
 
+  //Passing data into modal is still WIP
+  //Start of passing data
+  private _data: Data[] | undefined;
+
   @Input()
-  set data(value: Data[] | undefined) {
+  setdata(value: Data[] | undefined) {
     this._data = value;
   }
 
-  get data() {
+  getdata() {
     return this._data;
   }
 
@@ -109,6 +110,7 @@ export class ModalViewComponent {
   closeDrawer() {
     this.closeDrawerEmitter.emit();
   }
+  //End of passing data
 
   //Start of Radial bar
   public options: AgChartOptions;
@@ -125,9 +127,9 @@ export class ModalViewComponent {
           services: this.power_generation,
         },
       ],
-      width: 200,
-      height: 200,
       background: { fill: 'rgb(0, 0, 0, 0)' },
+      height:200,
+      width: 200,
       series: [
         {
           type: 'radial-bar',

@@ -125,6 +125,7 @@
 .right-modal .card-content {
   display: flex;
   padding: 0;
+
 }
 
 .right-modal .subtitle {
@@ -156,12 +157,9 @@
 
 .line-chart {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 300px; /* or any desired height */
+  justify-content: left;
+  align-items: left;
+  height: 200px; /* or any desired height */
+  overflow: hidden;
 }
 
-#chartContainer {
-  width: 100%; /* Full width */
-  height: 100%; /* Full height of its parent container */
-}
