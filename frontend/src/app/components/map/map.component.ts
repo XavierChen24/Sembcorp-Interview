@@ -2,11 +2,12 @@ import { environment } from './../../../../environments/environment';
 
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as L from 'leaflet';
+import { ModalViewComponent } from '../modal-view/modal-view.component';
 
 @Component({
   selector: 'app-map',
   standalone: true,
-  imports: [],
+  imports: [ModalViewComponent],
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css'],
 })
@@ -14,6 +15,7 @@ export class MapComponent implements OnInit {
   map: any;
   defaultZoom = environment.mapDefaultZoom;
   latlng = new L.LatLng(environment.mapCenter.lat, environment.mapCenter.long);
+  selectedCountry: any = null;
 
   configMap() {
     this.map = L.map('map', {
@@ -70,8 +72,12 @@ export class MapComponent implements OnInit {
   @ViewChild('dialog') dialog!: ElementRef<HTMLDialogElement>;
 
   closeModal() {
-    this.dialog.nativeElement.close();
-    this.dialog.nativeElement.classList.remove('opened');
+    this.selectedCountry = null;
+
+    setTimeout(() => {
+      this.dialog.nativeElement.close();
+      this.dialog.nativeElement.classList.remove('opened');
+    }, 100);
   }
 
   openModal(country: {
@@ -82,8 +88,13 @@ export class MapComponent implements OnInit {
     date_online: string;
     capacity_kw: number;
   }) {
-    this.dialog.nativeElement.showModal();
-    this.dialog.nativeElement.classList.add('opened');
+    this.selectedCountry = country;
+
+    setTimeout(() => {
+      this.dialog.nativeElement.showModal();
+      this.dialog.nativeElement.classList.add('opened');
+    }, 100);
+    
   }
 
   ngAfterViewInit() {

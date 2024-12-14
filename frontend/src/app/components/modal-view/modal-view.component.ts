@@ -26,7 +26,10 @@ import moment from 'moment';
   templateUrl: './modal-view.component.html',
   styleUrl: './modal-view.component.css',
 })
-export class ModalViewComponent implements OnInit{
+export class ModalViewComponent implements OnInit {
+
+  @Input() country: any = {};
+
   params = {
     lat: environment.countriesLatLong[0].lat,
     long: environment.countriesLatLong[0].long,
@@ -56,6 +59,8 @@ export class ModalViewComponent implements OnInit{
     ],
   };
   ngOnInit(): void {
+    console.log(this.country);
+    
     this.energyService.getEnergyData(this.params).then((response) => {
       const dailyData = response.hourly.direct_radiation.map(
         (irridiance: string, index: number) => ({
